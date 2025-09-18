@@ -1,0 +1,16 @@
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\config\CorsConfig.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\config\JwtAuthFilter.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\config\JwtUtil.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\config\SecurityConfig.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\controller\AuthController.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\controller\UserController.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\dto\AuthResponse.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\dto\LoginRequest.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\dto\UserDTO.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\dto\UserPrincipal.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\exception\GlobalExceptionHandler.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\model\User.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\repository\UserRepository.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\service\AuthService.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\service\CustomUserDetailService.java
+C:\Users\dipes\IdeaProjects\VirtualAssistant\src\main\java\com\virtual_assistant\VirtualAssistantApplication.java

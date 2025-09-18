@@ -1,0 +1,17 @@
+com\virtual_assistant\dto\AuthResponse.class
+com\virtual_assistant\config\JwtAuthFilter.class
+com\virtual_assistant\config\JwtUtil.class
+com\virtual_assistant\repository\UserRepository.class
+com\virtual_assistant\config\CorsConfig.class
+com\virtual_assistant\dto\UserPrincipal.class
+com\virtual_assistant\service\CustomUserDetailService.class
+com\virtual_assistant\dto\LoginRequest.class
+com\virtual_assistant\model\User.class
+com\virtual_assistant\config\CorsConfig$1.class
+com\virtual_assistant\controller\AuthController.class
+com\virtual_assistant\dto\UserDTO.class
+com\virtual_assistant\VirtualAssistantApplication.class
+com\virtual_assistant\service\AuthService.class
+com\virtual_assistant\controller\UserController.class
+com\virtual_assistant\exception\GlobalExceptionHandler.class
+com\virtual_assistant\config\SecurityConfig.class
