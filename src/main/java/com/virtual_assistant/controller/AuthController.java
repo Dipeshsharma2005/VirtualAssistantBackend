@@ -5,13 +5,11 @@ import com.virtual_assistant.dto.LoginRequest;
 import com.virtual_assistant.dto.UserDTO;
 import com.virtual_assistant.model.User;
 import com.virtual_assistant.service.AuthService;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,48 +22,26 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<UserDTO> signup(@Valid @RequestBody User user, HttpServletResponse response) {
         AuthResponse authResponse = authService.signup(user);
-        String token = authResponse.getToken();
-        addJwtCookie(response, token);
-
-        UserDTO userDTO = authResponse.getUser();
-
-        return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
+        addJwtCookie(response, authResponse.getToken());
+        return new ResponseEntity<>(authResponse.getUser(), HttpStatus.CREATED);
     }
 
     @PostMapping("/signin")
     public ResponseEntity<UserDTO> login(@RequestBody LoginRequest request, HttpServletResponse response) {
         AuthResponse authResponse = authService.login(request.getEmail(), request.getPassword());
-        String token = authResponse.getToken();
-        addJwtCookie(response, token);
-
-        UserDTO userDTO = authResponse.getUser();
-
-        return ResponseEntity.ok(userDTO);
+        addJwtCookie(response, authResponse.getToken());
+        return ResponseEntity.ok(authResponse.getUser());
     }
-
-
 
     @DeleteMapping("/logout")
     public void logout(HttpServletResponse response) {
-        Cookie cookie = new Cookie("jwt", null);
-        cookie.setHttpOnly(true);
-        cookie.setSecure(false); // true in production
-        cookie.setPath("/");
-        cookie.setMaxAge(0);
-        response.addCookie(cookie);
+        // Expire the cookie
+        response.addHeader("Set-Cookie", "jwt=; HttpOnly; Path=/; Max-Age=0; SameSite=None; Secure");
     }
 
-
-
-   private void addJwtCookie(HttpServletResponse response, String token) {
-    Cookie cookie = new Cookie("jwt", token);
-    cookie.setHttpOnly(true);           // JS can't access
-    cookie.setSecure(false);            // true in production (HTTPS only)
-    cookie.setPath("/");
-    cookie.setMaxAge(24 * 60 * 60);     // 1 day
-    cookie.setDomain("localhost");       // optional for dev
-    cookie.setSameSite("None");          // allows cross-origin requests
-    response.addCookie(cookie);
-}
-
+    // Add JWT cookie via Set-Cookie header for cross-origin SPA
+    private void addJwtCookie(HttpServletResponse response, String token) {
+        String cookie = "jwt=" + token + "; HttpOnly; Path=/; Max-Age=86400; SameSite=None; Secure";
+        response.addHeader("Set-Cookie", cookie);
+    }
 }
