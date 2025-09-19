@@ -7,6 +7,9 @@ Handles authentication, JWT, assistant customization, and AI chat response manag
 ## 🌍 Live Backend URL
 Deployed on Render:  
 ➡️ https://virtualassistantbackend-oefv.onrender.com
+
+🔗 Frontend Repo: [virtual-assistant-frontend](https://github.com/Dipeshsharma2005/VirtualAssistantFrontend)  
+
 ---
 
 ## 🚀 Features
