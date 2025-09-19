@@ -1,12 +1,12 @@
 # 🖥 Virtual Assistant Backend
 
-## 🌍 Live Backend URL
-Deployed on Render:  
-➡️ https://virtualassistantbackend-oefv.onrender.com
 
 Spring Boot backend for the **Virtual Assistant App**.  
 Handles authentication, JWT, assistant customization, and AI chat response management.  
 
+## 🌍 Live Backend URL
+Deployed on Render:  
+➡️ https://virtualassistantbackend-oefv.onrender.com
 ---
 
 ## 🚀 Features
