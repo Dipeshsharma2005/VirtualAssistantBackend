@@ -35,13 +35,21 @@ public class AuthController {
 
     @DeleteMapping("/logout")
     public void logout(HttpServletResponse response) {
-        // Expire the cookie
-        response.addHeader("Set-Cookie", "jwt=; HttpOnly; Path=/; Max-Age=0; SameSite=None; Secure");
+        // Expire the JWT cookie
+        response.addHeader("Set-Cookie",
+                "jwt=; HttpOnly; Path=/; Max-Age=0; SameSite=None; Secure");
     }
 
-    // Add JWT cookie via Set-Cookie header for cross-origin SPA
+    /**
+     * Add JWT cookie via response header for cross-origin SPA
+     */
     private void addJwtCookie(HttpServletResponse response, String token) {
-        String cookie = "jwt=" + token + "; HttpOnly; Path=/; Max-Age=86400; SameSite=None; Secure";
+        String cookie = "jwt=" + token +
+                        "; HttpOnly" +
+                        "; Path=/" +
+                        "; Max-Age=86400" +      // 1 day
+                        "; SameSite=None" +       // allow cross-origin
+                        "; Secure";               // true in production (HTTPS)
         response.addHeader("Set-Cookie", cookie);
     }
 }
