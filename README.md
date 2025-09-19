@@ -94,3 +94,8 @@ Select Docker deploy option
 Add environment variables
 
 Expose $PORT
+
+<img width="1920" height="1080" alt="Asking in postman" src="https://github.com/user-attachments/assets/e40ee6dd-2721-4061-8694-f5223bef32fb" />
+<img width="1920" height="1080" alt="Signup in postman" src="https://github.com/user-attachments/assets/32c316bd-1a56-4627-bfa7-30ab8f6df074" />
+
+
