@@ -57,12 +57,15 @@ public class AuthController {
 
 
 
-    private void addJwtCookie(HttpServletResponse response, String token) {
-        Cookie cookie = new Cookie("jwt", token);
-        cookie.setHttpOnly(true);       // JS can't read it
-        cookie.setSecure(false);        // true in production (HTTPS only)
-        cookie.setPath("/");            // valid for all endpoints
-        cookie.setMaxAge(24 * 60 * 60); // 1 day
-        response.addCookie(cookie);
-    }
+   private void addJwtCookie(HttpServletResponse response, String token) {
+    Cookie cookie = new Cookie("jwt", token);
+    cookie.setHttpOnly(true);           // JS can't access
+    cookie.setSecure(false);            // true in production (HTTPS only)
+    cookie.setPath("/");
+    cookie.setMaxAge(24 * 60 * 60);     // 1 day
+    cookie.setDomain("localhost");       // optional for dev
+    cookie.setSameSite("None");          // allows cross-origin requests
+    response.addCookie(cookie);
+}
+
 }
