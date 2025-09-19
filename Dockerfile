@@ -15,6 +15,7 @@ COPY src src
 # Build app (skip tests)
 RUN ./mvnw clean package -DskipTests
 
+
 # -------- Run Stage --------
 FROM eclipse-temurin:17-jre
 WORKDIR /app
