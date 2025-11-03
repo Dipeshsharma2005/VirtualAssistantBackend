@@ -1,35 +1,42 @@
 # 🖥 Virtual Assistant Backend
 
-
 Spring Boot backend for the **Virtual Assistant App**.  
-Handles authentication, JWT, assistant customization, and AI chat response management.  
+Handles authentication, JWT, assistant customization, and AI chat response management.
+
+---
 
 ## 🌍 Live Backend URL
-Deployed on Render:  
-➡️ https://virtualassistantbackend-oefv.onrender.com
+**Deployed on Render:**  
+➡️ [https://virtualassistantbackend-oefv.onrender.com](https://virtualassistantbackend-oefv.onrender.com)
 
-🔗 Frontend Repo: [virtual-assistant-frontend](https://github.com/Dipeshsharma2005/VirtualAssistantFrontend)  
+**Frontend Repo:**  
+🔗 [virtual-assistant-frontend](https://github.com/yourusername/virtual-assistant-frontend)
 
 ---
 
 ## 🚀 Features
-- Spring Boot 3
-- Spring Security with JWT Authentication
-- PostgreSQL database
-- User registration & login
-- Assistant customization (name + avatar)
-- AI assistant chat endpoints
-- Dockerfile for deployment (Render/Heroku/others)
+
+- ⚙️ Built with **Spring Boot 3**
+- 🔐 Secure login using **JWT Authentication**
+- 🗄 **PostgreSQL** database integration
+- 👤 **User registration & login**
+- 🎨 **Assistant customization** (name + avatar)
+- 🤖 **AI chat endpoints** powered by Gemini API
+- 🐳 **Dockerfile** for easy deployment (Render, Heroku, etc.)
 
 ---
 
-## ⚙️ Tech Stack
-- Java 17
-- Spring Boot 3
-- Spring Security + JWT
-- JPA + PostgreSQL
-- Maven
-- Lombok
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|-------|-------------|
+| Language | Java 17 |
+| Framework | Spring Boot 3 |
+| Security | Spring Security + JWT |
+| Database | PostgreSQL |
+| ORM | Spring Data JPA |
+| Build Tool | Maven |
+| Utility | Lombok |
 
 ---
 
@@ -39,12 +46,17 @@ Deployed on Render:
 ```bash
 git clone https://github.com/yourusername/virtual-assistant.git
 cd backend
+```
 
+### 2️⃣ Configure Database & Keys
 
-2️⃣ Configure Database & Keys
+Create a file at:
+```
+src/main/resources/application.properties
+```
 
-Create src/main/resources/application.properties:
-
+Add the following:
+```properties
 spring.application.name=VirtualAssistant
 
 spring.datasource.url=${DB_URL}
@@ -63,46 +75,85 @@ spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=10MB
 
 gemini.api.key=${GEMINI_KEY}
+```
 
-
-3️⃣ Run Backend
+### 3️⃣ Run Backend
+```bash
 ./mvnw spring-boot:run
+```
 
-Server runs at:
-➡️ http://localhost:8080
+**Server runs at:**  
+➡️ [http://localhost:8080](http://localhost:8080)
 
-🔑 API Endpoints
-Auth
+---
 
-POST /api/auth/signup → Register new user
+## 🔑 API Endpoints
 
-POST /api/auth/signin → Login & receive JWT
+### 🧾 Auth
+| Method | Endpoint | Description |
+|--------|-----------|-------------|
+| POST | `/api/auth/signup` | Register a new user |
+| POST | `/api/auth/signin` | Login & receive JWT |
 
-User
+### 👤 User
+| Method | Endpoint | Description |
+|--------|-----------|-------------|
+| GET | `/api/users/current` | Get logged-in user |
+| PUT | `/api/users/update/{id}` | Update assistant name/image |
 
-GET /api/users/current → Get logged-in user
+### 🤖 Assistant
+| Method | Endpoint | Description |
+|--------|-----------|-------------|
+| POST | `/api/users/ask?userId={id}` | Ask Gemini AI |
 
-PUT /api/users/update/{id} → Update assistant name/image
+---
 
-Assistant
+## ☁️ Deployment
 
-POST /api/users/ask?userId={id} → Ask Gemini AI
-
-
-☁️ Deployment
-Using Docker
+### 🐳 Using Docker
+```bash
 docker build -t virtual-assistant-backend .
 docker run -p 8080:8080 virtual-assistant-backend
+```
 
-On Render
+### 🚀 On Render
+- Select **Docker deploy option**
+- Add **environment variables**
+- Expose `$PORT`
 
-Select Docker deploy option
+---
 
-Add environment variables
+## 🧪 API Testing in Postman
 
-Expose $PORT
+### ✳️ Signup Request
+<img src="https://github.com/user-attachments/assets/32c316bd-1a56-4627-bfa7-30ab8f6df074" alt="Signup in Postman" width="800"/>
 
-<img width="1920" height="1080" alt="Asking in postman" src="https://github.com/user-attachments/assets/e40ee6dd-2721-4061-8694-f5223bef32fb" />
-<img width="1920" height="1080" alt="Signup in postman" src="https://github.com/user-attachments/assets/32c316bd-1a56-4627-bfa7-30ab8f6df074" />
+### 💬 Asking Gemini AI
+<img src="https://github.com/user-attachments/assets/e40ee6dd-2721-4061-8694-f5223bef32fb" alt="Asking in Postman" width="800"/>
+
+---
+
+## 🧠 Architecture Overview
+```
+┌────────────┐      JWT       ┌──────────────┐
+│  Frontend  │  <──────────>  │  Spring Boot │
+│ (React)    │                 │  Backend     │
+└────────────┘                 │  (REST API)  │
+        │                      └──────┬──────┘
+        │  PostgreSQL + Cloudinary    │
+        ▼                             ▼
+ ┌──────────────┐           ┌────────────────┐
+ │  Database    │           │  Gemini AI API │
+ └──────────────┘           └────────────────┘
+```
+
+---
+
+## 🧑‍💻 Author
+
+**Dipesh Sharma**  
 
 
+---
+
+⭐ **If you like this project, give it a star!**
