@@ -9,6 +9,8 @@ Handles authentication, JWT, assistant customization, and AI chat response manag
 **Deployed on Render:**  
 ➡️ [https://virtualassistantbackend-oefv.onrender.com](https://virtualassistantbackend-oefv.onrender.com)
 
+⚠️ **Note:** The backend service is currently **temporarily unavailable**. It will be restored shortly.  
+
 **Frontend Repo:**  
 🔗 [virtual-assistant-frontend](https://github.com/yourusername/virtual-assistant-frontend)
 
