@@ -7,12 +7,12 @@ Handles authentication, JWT, assistant customization, and AI chat response manag
 
 ## 🌍 Live Backend URL
 **Deployed on Render:**  
-➡️ [https://virtualassistantbackend-oefv.onrender.com](https://virtualassistantbackend-oefv.onrender.com)
+➡️ https://virtualassistantbackend-oefv.onrender.com  
 
 ⚠️ **Note:** The backend service is currently **temporarily unavailable**. It will be restored shortly.  
 
 **Frontend Repo:**  
-🔗 [virtual-assistant-frontend](https://github.com/yourusername/virtual-assistant-frontend)
+🔗 https://github.com/Dipeshsharma2005/VirtualAssistantFrontend
 
 ---
 
@@ -24,7 +24,6 @@ Handles authentication, JWT, assistant customization, and AI chat response manag
 - 👤 **User registration & login**
 - 🎨 **Assistant customization** (name + avatar)
 - 🤖 **AI chat endpoints** powered by Gemini API
-- 🐳 **Dockerfile** for easy deployment (Render, Heroku, etc.)
 
 ---
 
@@ -44,28 +43,28 @@ Handles authentication, JWT, assistant customization, and AI chat response manag
 
 ## ⚡ Setup Instructions
 
-### 1️⃣ Clone & Navigate
+### 1️⃣ Clone Repository
 ```bash
-git clone https://github.com/yourusername/virtual-assistant.git
-cd backend
+git clone https://github.com/Dipeshsharma2005/VirtualAssistantBackend.git
+cd virtual-assistant
 ```
 
-### 2️⃣ Configure Database & Keys
+---
 
-Create a file at:
+### 2️⃣ Configure Environment Variables
+
+Update the existing file:
+
 ```
 src/main/resources/application.properties
 ```
 
-Add the following:
-```properties
-spring.application.name=VirtualAssistant
+Replace values with your own credentials:
 
+```properties
 spring.datasource.url=${DB_URL}
 spring.datasource.username=${DB_USER}
 spring.datasource.password=${DB_PASS}
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
 
 JWT_SECRET_KEY=${JWT_KEY}
 
@@ -73,11 +72,12 @@ cloudinary.cloud-name=${CLOUD_NAME}
 cloudinary.api-key=${CLOUD_API_KEY}
 cloudinary.api-secret=${CLOUD_API_SECRET}
 
-spring.servlet.multipart.max-file-size=10MB
-spring.servlet.multipart.max-request-size=10MB
-
 gemini.api.key=${GEMINI_KEY}
 ```
+
+💡 You can set these values using environment variables or directly inside the file for local testing.
+
+---
 
 ### 3️⃣ Run Backend
 ```bash
@@ -85,8 +85,7 @@ gemini.api.key=${GEMINI_KEY}
 ```
 
 **Server runs at:**  
-➡️ [http://localhost:8080](http://localhost:8080)
-
+➡️ http://localhost:8080
 ---
 
 ## 🔑 API Endpoints
@@ -97,11 +96,15 @@ gemini.api.key=${GEMINI_KEY}
 | POST | `/api/auth/signup` | Register a new user |
 | POST | `/api/auth/signin` | Login & receive JWT |
 
+---
+
 ### 👤 User
 | Method | Endpoint | Description |
 |--------|-----------|-------------|
 | GET | `/api/users/current` | Get logged-in user |
 | PUT | `/api/users/update/{id}` | Update assistant name/image |
+
+---
 
 ### 🤖 Assistant
 | Method | Endpoint | Description |
@@ -110,18 +113,11 @@ gemini.api.key=${GEMINI_KEY}
 
 ---
 
-## ☁️ Deployment
+## ☁️ Deployment (Render)
 
-### 🐳 Using Docker
-```bash
-docker build -t virtual-assistant-backend .
-docker run -p 8080:8080 virtual-assistant-backend
-```
-
-### 🚀 On Render
-- Select **Docker deploy option**
-- Add **environment variables**
-- Expose `$PORT`
+- Deploy using **Render Web Service**
+- Add required **environment variables**
+- Ensure correct **PORT configuration**
 
 ---
 
@@ -137,24 +133,23 @@ docker run -p 8080:8080 virtual-assistant-backend
 
 ## 🧠 Architecture Overview
 ```
-┌────────────┐      JWT       ┌──────────────┐
-│  Frontend  │  <──────────>  │  Spring Boot │
-│ (React)    │                 │  Backend     │
-└────────────┘                 │  (REST API)  │
-        │                      └──────┬──────┘
-        │  PostgreSQL + Cloudinary    │
-        ▼                             ▼
- ┌──────────────┐           ┌────────────────┐
- │  Database    │           │  Gemini AI API │
- └──────────────┘           └────────────────┘
+Frontend (React)
+        │
+        │  JWT Auth + REST APIs
+        ▼
+Spring Boot Backend
+        │
+ ┌───────────────┬───────────────┐
+ ▼               ▼               ▼
+PostgreSQL   Cloudinary     Gemini API
+(Database)   (Images)       (AI Chat)
 ```
 
 ---
 
 ## 🧑‍💻 Author
 
-**Dipesh Sharma**  
-
+**Dipesh Sharma**
 
 ---
 
